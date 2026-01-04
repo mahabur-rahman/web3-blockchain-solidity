@@ -8,10 +8,10 @@ module.exports = {
   },
 
   contracts_directory: './src/contracts',
-  contracts_build_directory: './src/abis',
+  contracts_build_directory: './src/truffle_abis',
   migrations_directory: './migrations',
 
-  compilers: {
+  compilers: {  
     solc: {
       version: "0.8.21",
       settings: {

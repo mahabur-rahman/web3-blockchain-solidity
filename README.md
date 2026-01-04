@@ -21,7 +21,7 @@ module.exports = {
     }
   },
   contracts_directory: './src/contracts',
-  contracts_build_directory: './src/abis',
+  contracts_build_directory: './src/truffle_abis',
   migrations_directory: './migrations',
   compilers: {
     solc: {
@@ -63,13 +63,13 @@ contract Migrations {
         if (msg.sender == owner) _;
     }
 
-    function set_completed(uint completed) public restricted {
+    function setCompleted(uint completed) public restricted {
         last_completed_migration = completed;
     }
 
     function upgrade(address new_address) public restricted {
         Migrations upgraded = Migrations(new_address);
-        upgraded.set_completed(last_completed_migration);
+        upgraded.setCompleted(last_completed_migration);
     }
 }
 ```
@@ -81,7 +81,7 @@ contract Migrations {
 ---
 
 ### **ধাপ ৩: Migrations Deployment Script**
-📁 **File:** `migrations/run_migrations.js`
+📁 **File:** `migrations/1_initial_migration.js`
 
 ```javascript
 const Migrations = artifacts.require("Migrations");
@@ -159,13 +159,13 @@ web3-blockchain/
 │   ├── contracts/              # Smart Contracts
 │   │   ├── Migrations.sol      ✅ Migration tracking contract
 │   │   └── Tether.sol          ✅ USDT token contract
-│   ├── abis/                   # Compiled contract JSON (auto-generated)
+│   ├── truffle_abis/           # Compiled contract JSON (auto-generated)
 │   ├── components/             # React components
 │   ├── pages/                  # React pages
 │   ├── App.tsx                 # Main React component
 │   └── main.tsx                # React entry point
 ├── migrations/                 # Deployment scripts
-│   ├── run_migrations.js       ✅ Deploy Migrations contract
+│   ├── 1_initial_migration.js  ✅ Deploy Migrations contract
 │   └── 2_deploy_contracts.js   ✅ Deploy Tether contract (async/await)
 ├── public/                     # Static files
 ├── truffle-config.js           ✅ Truffle configuration
@@ -204,8 +204,8 @@ truffle compile
 ```
 
 **Output:**
-- `src/abis/Migrations.json` তৈরি হবে
-- `src/abis/Tether.json` তৈরি হবে
+- `src/truffle_abis/Migrations.json` তৈরি হবে
+- `src/truffle_abis/Tether.json` তৈরি হবে
 
 ---
 

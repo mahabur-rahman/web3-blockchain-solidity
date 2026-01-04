@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "compile": "truffle compile --config truffle-config.cjs",
+    "migrate": "truffle migrate --config truffle-config.cjs",
+    "console": "truffle console --config truffle-config.cjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

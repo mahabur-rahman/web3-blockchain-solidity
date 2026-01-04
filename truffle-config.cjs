@@ -11,14 +11,15 @@ module.exports = {
   contracts_build_directory: './src/truffle_abis',
   migrations_directory: './migrations',
 
-  compilers: {  
+  compilers: {
     solc: {
-      version: "0.8.21",
+      version: "0.8.13",  // Lower version for Ganache v2 compatibility
       settings: {
         optimizer: {
           enabled: true,
           runs: 200
-        }
+        },
+        evmVersion: "london"  // Use London EVM version
       }
     }
   }

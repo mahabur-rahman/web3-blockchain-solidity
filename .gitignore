@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Truffle
+build/
+src/truffle_abis/
+contract-addresses.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
